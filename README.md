@@ -175,25 +175,10 @@ ansible-playbook nginx-podman-playbook-start.yaml
     - containers.podman
 
   tasks:
-    - name: Pull the latest NGINX image
-      podman_image:
-        name: docker.io/library/nginx
-        tag: latest
-        state: present
-
-    - name: Run the NGINX container
+    - name: Ensure the container is stopped
       podman_container:
         name: nginx_container
-        image: docker.io/library/nginx:latest
-        state: started
-        ports:
-          - "8080:80"
-        restart_policy: always
-
-    - name: Ensure the container is running
-      podman_container:
-        name: nginx_container
-        state: started
+        state: stopped
 ```
 
 2. Run the playbook
