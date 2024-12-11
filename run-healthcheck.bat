@@ -1,0 +1,1 @@
+podman run --replace -d --name container-healthcheck --health-cmd /healthcheck --health-on-failure=kill --health-retries=1 docker.io/tagitmobile/container-healthcheck

@@ -1,0 +1,1 @@
+podman run --rm -it --name container-healthcheck --health-cmd /healthcheck --health-on-failure=none --health-retries=1 docker.io/tagitmobile/container-healthcheck

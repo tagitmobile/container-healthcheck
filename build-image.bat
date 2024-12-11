@@ -1,0 +1,1 @@
+docker build -t docker.io/tagitmobile/container-healthcheck .
