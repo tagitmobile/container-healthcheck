@@ -21,6 +21,14 @@ sudo dnf install ansible-core
 ansible-galaxy collection install containers.podman
 ```
 
+## Ubuntu 22.04+
+
+```
+sudo apt install podman
+sudo apt install ansible
+ansible-galaxy collection install containers.podman
+```
+
 # HealthCheck Commands
 
 Demostrate the manual healthcheck feature.
