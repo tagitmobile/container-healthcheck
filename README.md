@@ -127,10 +127,14 @@ Dec 11 10:24:11 ip-172-31-24-243.ap-southeast-1.compute.internal podman[4072]: W
 
 6. sudo systemctl stop myapp-container.service
 
+# Starting and Stopping a Container 
 
-# Ansible Playbook
+## Ansible Playbook
+Podman and Ansible are very good tools individually for managing containers and automating all things respectively. They are even better together for enabling automation and orchestration of the container and pod lifecycles in simple scenarios. 
 
-## Start a Container
+More information: https://www.redhat.com/en/blog/ansible-podman-container-deployment
+
+### Start a Container
 
 1. Write the `nginx-podman-playbook-start.yaml` playbook
 
@@ -170,7 +174,7 @@ Dec 11 10:24:11 ip-172-31-24-243.ap-southeast-1.compute.internal podman[4072]: W
 ansible-playbook nginx-podman-playbook-start.yaml
 ```
 
-## Stop a Container
+### Stop a Container
 
 1. Write the `nginx-podman-playbook-stop.yaml` playbook
 
@@ -193,6 +197,23 @@ ansible-playbook nginx-podman-playbook-start.yaml
 
 ```
 ansible-playbook nginx-podman-playbook-stop.yaml
+```
+
+## Shell Script 
+With only Podman and the shell.
+
+### Start a Container
+Run the command as-is or write a script with the below command.
+
+```
+podman run --replace -d --name nginx -p 8080:80 docker.io/library/nginx:latest
+```
+
+### Stop a Container
+Run the command as-is or write a script with the below command.
+
+```
+podman stop nginx
 ```
 
 # Reference
