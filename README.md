@@ -13,7 +13,7 @@ ansible-galaxy collection install containers.podman
 ```
 
 
-## RHEL 9.x
+## RHEL 9.x / 10
 
 ```
 sudo dnf install podman
@@ -231,3 +231,54 @@ podman stop nginx
 
 - https://www.redhat.com/en/blog/ansible-podman-container-deployment
 - https://docs.ansible.com/ansible/latest/collections/containers/podman/index.html
+
+# Additional Linux Commands
+
+## Listing the Processes
+
+### All Processes with Full Command 
+```bash
+ps -eafww
+```
+
+### All Processes with Container CGroup Namespaces
+```bash
+ps -ea -o user,exe,ppid,pid,cgroupns,ipcns,mntns,netns,pidns,userns,utsns,cgname
+podman ps --ns
+```
+
+## Listing the Network Ports
+```bash
+ss -ltnupr --cgroup
+```
+
+### Process Details 
+
+```bash
+ls /proc/<PID>/
+cat /proc/<PID>/cmdline
+cat /proc/<PID>/status
+```
+## Journal Events
+
+### Listing All Events
+```bash
+journalctl -b
+```
+
+### Listing All Podman Events
+```bash
+journalctl -b SYSLOG_IDENTIFIER=podman PODMAN_NAME=run_image -o json-pretty
+```
+
+### Listing All Container Names
+```bash
+journalctl -F CONTAINER_NAME
+```
+
+### Listing Specific Container Events
+```bash
+journalctl CONTAINER_NAME=run_image
+```
+
+
